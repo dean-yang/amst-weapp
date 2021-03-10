@@ -1,0 +1,11 @@
+.amst-activ{
+    width: 100%;
+    margin-top: 50px;
+    &-img{
+        margin: 0 20px;
+        border-radius: 15px 15px 15px 15px;
+        border:0;
+        width: calc(100% - 40px);
+        height: 260px;
+    }
+}

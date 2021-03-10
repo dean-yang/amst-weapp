@@ -1,0 +1,103 @@
+Arguments: 
+  /usr/local/bin/node /Users/yueyuhang/.yarn/bin/yarn.js add @taro-ui@3.0.0-alpha.1 -s
+
+PATH: 
+  /Users/yueyuhang/.yarn/bin:/Users/yueyuhang/.config/yarn/global/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/yueyuhang/.yarn/bin:/Users/yueyuhang/.config/yarn/global/node_modules/.bin
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  14.15.5
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://r.cnpmjs.org/@taro-ui: [not_found] document not found
+      at Request.params.callback [as _callback] (/Users/yueyuhang/.yarn/lib/cli.js:66988:18)
+      at Request.self.callback (/Users/yueyuhang/.yarn/lib/cli.js:140749:22)
+      at Request.emit (events.js:315:20)
+      at Request.<anonymous> (/Users/yueyuhang/.yarn/lib/cli.js:141721:10)
+      at Request.emit (events.js:315:20)
+      at IncomingMessage.<anonymous> (/Users/yueyuhang/.yarn/lib/cli.js:141643:12)
+      at Object.onceWrapper (events.js:421:28)
+      at IncomingMessage.emit (events.js:327:22)
+      at endReadableNT (internal/streams/readable.js:1327:12)
+      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+
+npm manifest: 
+  {
+    "name": "mamst",
+    "version": "1.0.0",
+    "private": true,
+    "description": "amst",
+    "templateInfo": {
+      "name": "redux",
+      "typescript": true,
+      "css": "sass"
+    },
+    "scripts": {
+      "build:weapp": "taro build --type weapp",
+      "build:swan": "taro build --type swan",
+      "build:alipay": "taro build --type alipay",
+      "build:tt": "taro build --type tt",
+      "build:h5": "taro build --type h5",
+      "build:rn": "taro build --type rn",
+      "build:qq": "taro build --type qq",
+      "build:jd": "taro build --type jd",
+      "build:quickapp": "taro build --type quickapp",
+      "dev:weapp": "npm run build:weapp -- --watch",
+      "dev:swan": "npm run build:swan -- --watch",
+      "dev:alipay": "npm run build:alipay -- --watch",
+      "dev:tt": "npm run build:tt -- --watch",
+      "dev:h5": "npm run build:h5 -- --watch",
+      "dev:rn": "npm run build:rn -- --watch",
+      "dev:qq": "npm run build:qq -- --watch",
+      "dev:jd": "npm run build:jd -- --watch",
+      "dev:quickapp": "npm run build:quickapp -- --watch"
+    },
+    "browserslist": [
+      "last 3 versions",
+      "Android >= 4.1",
+      "ios >= 8"
+    ],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+      "@babel/runtime": "^7.7.7",
+      "@tarojs/components": "3.1.2",
+      "@tarojs/runtime": "3.1.2",
+      "@tarojs/taro": "3.1.2",
+      "redux-logger": "^3.0.6",
+      "redux-thunk": "^2.3.0",
+      "redux": "^4.0.0",
+      "react-redux": "^7.2.0",
+      "react-dom": "^17.0.0",
+      "@tarojs/react": "3.1.2",
+      "react": "^17.0.0"
+    },
+    "devDependencies": {
+      "@types/webpack-env": "^1.13.6",
+      "@types/react": "^17.0.2",
+      "@tarojs/mini-runner": "3.1.2",
+      "@babel/core": "^7.8.0",
+      "@tarojs/webpack-runner": "3.1.2",
+      "babel-preset-taro": "3.1.2",
+      "eslint-config-taro": "3.1.2",
+      "eslint": "^6.8.0",
+      "eslint-plugin-react": "^7.8.2",
+      "eslint-plugin-import": "^2.12.0",
+      "eslint-plugin-react-hooks": "^4.2.0",
+      "stylelint": "9.3.0",
+      "@typescript-eslint/parser": "^4.15.1",
+      "@typescript-eslint/eslint-plugin": "^4.15.1",
+      "typescript": "^4.1.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

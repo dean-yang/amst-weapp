@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { View, Text,Button } from '@tarojs/components'
-import Taro from '@tarojs/taro'
+import { View } from '@tarojs/components'
+import { Footer } from '../../components/footer'
 
 // #region 书写注意
 //
@@ -40,13 +40,8 @@ interface Index {
 class Index extends Component {
   render () {
     return (
-      <View className='index'>
-        <View><Text>全部服务</Text></View>
-        <View><Button onClick={()=>{
-          Taro.redirectTo({
-            url:'/pages/myInfo/index'
-          })
-        }}>跳转我的</Button></View>
+      <View >
+        <Footer current={1}/>
       </View>
     )
   }

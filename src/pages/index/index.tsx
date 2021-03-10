@@ -1,8 +1,8 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { View, Text, Button } from '@tarojs/components'
-import Taro from '@tarojs/taro'
-import './index.scss'
+import { View,Image } from '@tarojs/components'
+import './style.scss'
+import {TopNavBar,Banner,NavGrid,Footer,ActivityImage} from '../../components'
 
 
 // #region 书写注意
@@ -40,16 +40,47 @@ interface Index {
   counter
 }))
 class Index extends Component {
+
+  leftIConhandleClick = ()=>{
+    console.log('左边图标')
+  }
+  rgIconSthandleClick = ()=> {
+    console.log('右边第一个图标')
+  }
+  rgIconNdhandleClick = ()=>{
+    console.log('右边第二个图标')
+  }
+  inpHandlerClick = () => {
+    console.log('点击inp')
+  }
+
+  bannerList = [
+    {
+      content:(<Image  src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/158254/22/11740/145221/6046e463E7e60bcc3/0f4989116d171f81.jpg!q70.jpg.dpg" style={{width:"100%",height:"100%"}}/>),
+      key:1
+    },{
+      content:(<Image  src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/158254/22/11740/145221/6046e463E7e60bcc3/0f4989116d171f81.jpg!q70.jpg.dpg" style={{width:"100%",height:"100%"}}/>),
+      key:2
+    },{
+      content:(<Image  src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/158254/22/11740/145221/6046e463E7e60bcc3/0f4989116d171f81.jpg!q70.jpg.dpg" style={{width:"100%",height:"100%"}}/>),
+      key:3
+    }
+  ]
+
   render () {
-    return (
-      <View className='index'>
-        <View><Text>首页</Text></View>
-        <View><Button onClick={()=>{
-          Taro.redirectTo({
-            url: '/pages/itemize/index'
-          })
-        }}>跳转</Button></View>
-      </View>
+    return (  
+        <View >
+          <TopNavBar 
+            rgIconSthandleClick={this.rgIconSthandleClick}
+            rgIconNdhandleClick={this.rgIconNdhandleClick}
+            leftIConhandleClick={this.leftIConhandleClick}
+            inpHandlerClick={this.inpHandlerClick}
+          />
+          <Banner item={this.bannerList} indicatorDots autoplay vertical={false} interval={2000}/>
+          <NavGrid />
+          <ActivityImage />
+          <Footer current={0}/>
+        </View>
     )
   }
 }
