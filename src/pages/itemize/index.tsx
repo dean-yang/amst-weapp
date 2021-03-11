@@ -1,7 +1,8 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { View } from '@tarojs/components'
-import { Footer } from '../../components/footer'
+import { Footer,TagTree } from '../../components'
+import { tabList,tabsPaneList } from './data'
 
 // #region 书写注意
 //
@@ -37,10 +38,18 @@ interface Index {
 @connect(({ counter }) => ({
   counter
 }))
-class Index extends Component {
+class Index extends Component<any,any> {
+  constructor(props){
+    super(props)
+    this.state = {
+      tagTreeCurrent:0
+    }
+  }
   render () {
+    const {tagTreeCurrent} = this.state
     return (
       <View >
+        <TagTree handleClick={(tagTreeCurrent)=>{this.setState({tagTreeCurrent})}} tabList={tabList} tabsPaneList={tabsPaneList} current={tagTreeCurrent}/>
         <Footer current={1}/>
       </View>
     )

@@ -1,8 +1,11 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { View,Image } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import './style.scss'
-import {TopNavBar,Banner,NavGrid,Footer,ActivityImage} from '../../components'
+import {TopNavBar,Banner,NavGrid,Footer,ActivityImage,List,Title} from '../../components'
+import {Emergency} from './components/emergency'
+import {CleaningChange} from './components/cleaningChange'
+import { bannerList, navDataList ,arrList} from './data'
 
 
 // #region 书写注意
@@ -54,31 +57,32 @@ class Index extends Component {
     console.log('点击inp')
   }
 
-  bannerList = [
-    {
-      content:(<Image  src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/158254/22/11740/145221/6046e463E7e60bcc3/0f4989116d171f81.jpg!q70.jpg.dpg" style={{width:"100%",height:"100%"}}/>),
-      key:1
-    },{
-      content:(<Image  src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/158254/22/11740/145221/6046e463E7e60bcc3/0f4989116d171f81.jpg!q70.jpg.dpg" style={{width:"100%",height:"100%"}}/>),
-      key:2
-    },{
-      content:(<Image  src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/158254/22/11740/145221/6046e463E7e60bcc3/0f4989116d171f81.jpg!q70.jpg.dpg" style={{width:"100%",height:"100%"}}/>),
-      key:3
-    }
-  ]
+  
 
   render () {
     return (  
-        <View >
+        <View className="amst-home">
           <TopNavBar 
             rgIconSthandleClick={this.rgIconSthandleClick}
             rgIconNdhandleClick={this.rgIconNdhandleClick}
             leftIConhandleClick={this.leftIConhandleClick}
             inpHandlerClick={this.inpHandlerClick}
           />
-          <Banner item={this.bannerList} indicatorDots autoplay vertical={false} interval={2000}/>
-          <NavGrid />
+          <Banner item={bannerList} indicatorDots autoplay vertical={false} interval={2000}/>
+          <NavGrid dataLsit={navDataList}/>
           <ActivityImage />
+          <Emergency />
+          <CleaningChange />
+          <View className={`amst-home-list`}>  
+            <Title title={'精选'}/>
+
+            {
+              arrList.map((item,index) => (
+                <List key={index} title={item.title} desc={item.desc} src={item.src} price={item.price} />
+              ))
+            }
+          </View>
+
           <Footer current={0}/>
         </View>
     )

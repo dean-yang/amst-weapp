@@ -9,4 +9,8 @@ import { Footer } from './footer'
 import { NavGrid } from './navGrid'
 import { SearchForm } from './searchForm'
 import { TopNavBar } from './topNavBar'
-export {ActivityImage,Banner,Footer,SearchForm,NavGrid,TopNavBar}
+import {Title} from './title'
+import {ImgText} from './imgText'
+import {List} from './list'
+import {TagTree} from './tagTree'
+export {ActivityImage,Banner,Footer,SearchForm,NavGrid,TopNavBar,Title,ImgText,List,TagTree}
