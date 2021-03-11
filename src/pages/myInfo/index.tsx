@@ -1,7 +1,10 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { View } from '@tarojs/components'
+import { View,Text,Button } from '@tarojs/components'
 import {Footer} from '../../components/footer'
+import {Avatar} from './conponensts/avatar'
+import {AtNoticebar} from 'taro-ui'
+import './style.scss'
 
 // #region 书写注意
 //
@@ -40,7 +43,12 @@ interface Index {
 class Index extends Component {
   render () {
     return (
-      <View className='index'>
+      <View className='amst-myInfo'>
+        <Avatar />
+        <AtNoticebar className={`amst-myInfo-atnoticebar`}>
+          <Text style={{flex:1,}}>开通龙之哼boger超级会员预计最高单次可省600元</Text>
+          <Text className={`amst-myInfo-atnoticebar-btn`}>开通会员</Text>
+        </AtNoticebar>
         <Footer current={2}/>
       </View>
     )

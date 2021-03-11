@@ -1,0 +1,30 @@
+.amst-myInfo-ava{
+    height: 300px;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(88, 169, 223, 0.515) 0%,rgba(0, 204, 255, 0.136) 100%);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    &-content{
+        padding: 40px;
+        display: flex;
+        &-name{
+            color: #666;
+        }
+        margin-bottom: 20px;
+    }
+    &-list{
+        display: flex;
+        justify-content: space-around;
+        &-item{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            &-text{
+                color: rgb(128, 124, 124);
+            }
+        }
+    }
+}

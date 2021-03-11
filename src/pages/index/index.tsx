@@ -69,7 +69,7 @@ class Index extends Component {
             inpHandlerClick={this.inpHandlerClick}
           />
           <Banner item={bannerList} indicatorDots autoplay vertical={false} interval={2000}/>
-          <NavGrid dataLsit={navDataList}/>
+          <NavGrid data={navDataList} columnNum={5}/>
           <ActivityImage />
           <Emergency />
           <CleaningChange />

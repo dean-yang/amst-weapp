@@ -1,0 +1,16 @@
+.amst-myInfo{
+    &-atnoticebar{
+        font-size: 20px;
+        padding: 20px 20px;
+        display: flex;
+       &-btn{
+            color:rosybrown;
+            background: #333;
+            border-radius:20px ;
+            padding: 10px;
+            margin-left: 20px;
+            display: inline;
+        }
+    }
+
+}

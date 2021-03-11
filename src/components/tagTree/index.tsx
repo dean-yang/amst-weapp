@@ -4,7 +4,7 @@ interface TagTreeProps {
     current:number,
     handleClick:(current:number) => void,
     tabList:Array<{title:string}>,
-    tabsPaneList:Array<{content:number}>
+    tabsPaneList:Array<{content:any}>
 }
 function TagTree(props:TagTreeProps){
     const {current,handleClick,tabList,tabsPaneList} = props
@@ -17,8 +17,8 @@ function TagTree(props:TagTreeProps){
             tabList={tabList}
             onClick={handleClick}>
                 {
-                    tabsPaneList.map(item => (
-                        <AtTabsPane tabDirection='vertical' current={current} index={0}>
+                    tabsPaneList.map((item,index) => (
+                        <AtTabsPane tabDirection='vertical' current={current} index={0} key={index}>
                             {
                                 item.content
                             }

@@ -1,8 +1,11 @@
+import {navDataList} from '../index/data'
+
+
 export const tabList = [
-    { title:"灯泡安装维修",id:0},
-   { title:"家电维修",id:1},
+    { title:"家电维修",id:0},
+   { title:"家电安装",id:1},
    { title:"家电清洗",id:2},
-   { title:"家电安装",id:3},
+   { title:"灯泡安装维修",id:3},
    { title:"卫浴维修",id:4},
    { title:"修锁换锁",id:5},
    { title:"管道疏通",id:6},
@@ -14,24 +17,24 @@ export const tabList = [
 ]
 export const tabsPaneList = [
     {
-        content:0
+        content:navDataList    
     }, {
-        content:1
+        content:navDataList
     }, {
-        content:2
+        content:navDataList
     }, {
-        content:3
+        content:navDataList
     }, {
-        content:4
+        content:navDataList
     }, {
-        content:5
+        content:navDataList
     }, {
-        content:6
+        content:navDataList
     }, {
-        content:7
+        content:navDataList
     }, {
-        content:8
+        content:navDataList
     }, {
-        content:9
+        content:navDataList
     },
 ]

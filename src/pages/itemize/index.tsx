@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { View } from '@tarojs/components'
-import { Footer,TagTree } from '../../components'
+import { Footer,TagTree,NavGrid,TopNavBar } from '../../components'
 import { tabList,tabsPaneList } from './data'
 
 // #region 书写注意
@@ -19,18 +19,13 @@ type PageStateProps = {
     num: number
   }
 }
-
 type PageDispatchProps = {
   add: () => void
   dec: () => void
   asyncAdd: () => any
 }
-
 type PageOwnProps = {}
-
-
 type IProps = PageStateProps & PageDispatchProps & PageOwnProps
-
 interface Index {
   props: IProps;
 }
@@ -45,11 +40,32 @@ class Index extends Component<any,any> {
       tagTreeCurrent:0
     }
   }
+  leftIConhandleClick = ()=>{
+    console.log('左边图标')
+  }
+  rgIconSthandleClick = ()=> {
+    console.log('右边第一个图标')
+  }
+  rgIconNdhandleClick = ()=>{
+    console.log('右边第二个图标')
+  }
+  inpHandlerClick = () => {
+    console.log('点击inp')
+  }
   render () {
+    const tabsPaneLists = tabsPaneList.map((item,index) => ({
+      content:<NavGrid data={item.content} columnNum={3} key={index}/>
+    }))
     const {tagTreeCurrent} = this.state
     return (
       <View >
-        <TagTree handleClick={(tagTreeCurrent)=>{this.setState({tagTreeCurrent})}} tabList={tabList} tabsPaneList={tabsPaneList} current={tagTreeCurrent}/>
+         <TopNavBar 
+            rgIconSthandleClick={this.rgIconSthandleClick}
+            rgIconNdhandleClick={this.rgIconNdhandleClick}
+            leftIConhandleClick={this.leftIConhandleClick}
+            inpHandlerClick={this.inpHandlerClick}
+          />
+        <TagTree handleClick={(tagTreeCurrent)=>{this.setState({tagTreeCurrent })}} tabList={tabList} tabsPaneList={tabsPaneLists} current={tagTreeCurrent}/>
         <Footer current={1}/>
       </View>
     )
