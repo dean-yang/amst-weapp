@@ -1,9 +1,12 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { View,Text,Button } from '@tarojs/components'
-import {Footer} from '../../components/footer'
+import { View,Text } from '@tarojs/components'
+import {Footer,List,Title} from '../../components'
 import {Avatar} from './conponensts/avatar'
 import {AtNoticebar} from 'taro-ui'
+import {Order} from './conponensts/order'
+import {ServerTool} from './conponensts/serverTool'
+import {arrList} from '../index/data'
 import './style.scss'
 
 // #region 书写注意
@@ -46,9 +49,19 @@ class Index extends Component {
       <View className='amst-myInfo'>
         <Avatar />
         <AtNoticebar className={`amst-myInfo-atnoticebar`}>
-          <Text style={{flex:1,}}>开通龙之哼boger超级会员预计最高单次可省600元</Text>
+          <Text style={{flex:1,}}>开通超级会员预计最高单次可省600元</Text>
           <Text className={`amst-myInfo-atnoticebar-btn`}>开通会员</Text>
         </AtNoticebar>
+        <Order />
+        <ServerTool />
+        <View>
+        <Title title={`精选`}/>
+          {
+                arrList.map((item,index) => (
+                  <List key={index} title={item.title} desc={item.desc} src={item.src} price={item.price} />
+                ))
+              }
+        </View>
         <Footer current={2}/>
       </View>
     )

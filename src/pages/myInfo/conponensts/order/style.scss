@@ -1,0 +1,16 @@
+.amst-myinfo-ord{
+    margin: 20px;    
+    background: #fff;
+    border-radius: 20px;
+    overflow:hidden;
+    &-grid{
+        margin: 0;
+    }
+}
+.amst-myinfo-ord .content-inner__img{
+    height: 60px;
+    width: 60px;
+}
+.amst-myinfo-ord .content-inner__text{
+    font-size: 20px;
+}

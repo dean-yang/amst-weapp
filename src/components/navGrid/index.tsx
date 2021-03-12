@@ -1,14 +1,15 @@
 import { AtGrid } from 'taro-ui'
 import './style.scss'
 interface NavGridProps {
-  data:Array<{image:string,value:string,key:string | number}>,
-  columnNum:number
+  data:Array<{image:string,value:string,key:string | number,}>,
+  columnNum:number,
+  className?:string
 }
 
 function NavGrid(props:NavGridProps) {
-  const {data,columnNum} = props
+  const {data,columnNum,className} = props
     return (
-        <AtGrid data={data} className={`amst-navgrid`}  hasBorder={false}  columnNum={columnNum}/>
+        <AtGrid data={data} className={`amst-navgrid ${className}`}  hasBorder={false}  columnNum={columnNum}/>
     )
 }
 
