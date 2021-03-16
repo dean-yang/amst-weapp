@@ -4,10 +4,10 @@ export const bannerList = [
       content:(<Image  src="https://sx.xiujiadian.com/images/block/s101/10/i2001/YXC88HI1H59YG769NFW85297DIJPGWQC.png" style={{width:"100%",height:"100%"}}/>),
       key:1
     },{
-      content:(<Image  src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/158254/22/11740/145221/6046e463E7e60bcc3/0f4989116d171f81.jpg!q70.jpg.dpg" style={{width:"100%",height:"100%"}}/>),
+      content:(<Image  src="/https://sx.xiujiadian.com/images/block/s101/10/i2001/YXC88HI1H59YG769NFW85297DIJPGWQC.png" style={{width:"100%",height:"100%"}}/>),
       key:2
     },{
-      content:(<Image  src="//m.360buyimg.com/mobilecms/s700x280_jfs/t1/158254/22/11740/145221/6046e463E7e60bcc3/0f4989116d171f81.jpg!q70.jpg.dpg" style={{width:"100%",height:"100%"}}/>),
+      content:(<Image  src="https://sx.xiujiadian.com/images/block/s101/10/i2001/YXC88HI1H59YG769NFW85297DIJPGWQC.png" style={{width:"100%",height:"100%"}}/>),
       key:3
     }
   ]
