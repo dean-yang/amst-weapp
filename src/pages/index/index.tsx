@@ -6,6 +6,7 @@ import {TopNavBar,Banner,NavGrid,Footer,ActivityImage,List,Title} from '../../co
 import {Emergency} from './components/emergency'
 import {CleaningChange} from './components/cleaningChange'
 import { bannerList, navDataList ,arrList} from './data'
+import fetch from '../../request'
 
 
 // #region 书写注意
@@ -56,7 +57,12 @@ class Index extends Component {
   inpHandlerClick = () => {
     console.log('点击inp')
   }
-
+  // 
+  componentDidMount(){
+    fetch.post('api/banner/get',{}).then(res => {
+      console.log(res)
+    })
+  }
   
 
   render () {
