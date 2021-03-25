@@ -13,4 +13,5 @@ import {Title} from './title'
 import {ImgText} from './imgText'
 import {List} from './list'
 import {TagTree} from './tagTree'
-export {ActivityImage,Banner,Footer,SearchForm,NavGrid,TopNavBar,Title,ImgText,List,TagTree}
+import {Loading} from './loading'
+export {ActivityImage,Banner,Footer,SearchForm,NavGrid,TopNavBar,Title,ImgText,List,TagTree,Loading}

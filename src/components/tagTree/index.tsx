@@ -1,31 +1,38 @@
-import { AtTabs, AtTabsPane } from 'taro-ui'
-
+import {View} from '@tarojs/components'
+import { getCurrentInstance } from '@tarojs/taro'
+import {useState} from 'react'
+import './style.scss'
 interface TagTreeProps {
-    current:number,
-    handleClick:(current:number) => void,
-    tabList:Array<{title:string}>,
-    tabsPaneList:Array<{content:any}>
+    handleClick:(id:string) => void,
+    tabList:{name:string,id:string}[],
+    children:React.ReactElement
 }
 function TagTree(props:TagTreeProps){
-    const {current,handleClick,tabList,tabsPaneList} = props
+    const {handleClick,tabList,children} = props
+    const [show,setShow] = useState(getCurrentInstance().router?.params.current || 0)
     return (
-        <AtTabs
-            current={current}
-            scroll
-            height='100vh'
-            tabDirection='vertical'
-            tabList={tabList}
-            onClick={handleClick}>
+        <View  className={`amst-tree`}>
+            <View  className={`amst-tree-tab `}>
                 {
-                    tabsPaneList.map((item,index) => (
-                        <AtTabsPane tabDirection='vertical' current={current} index={0} key={index}>
-                            {
-                                item.content
-                            }
-                        </AtTabsPane>
+                    tabList.map((item,index) => (
+                        <View key={item.id} className={`amst-tree-tab-item ${show === index ? 'show' : ''}`} onClick={()=>{
+                            setShow(index)
+                            handleClick(item.id)
+                        }}>
+                            <View>
+                                {item.name}
+                            </View>
+                        </View>
                     ))
                 }
-        </AtTabs>
+
+            </View>
+            <View  className={`amst-tree-content`}>
+                {
+                    children
+                }
+            </View>
+        </View>
     )
 }
 export { TagTree }

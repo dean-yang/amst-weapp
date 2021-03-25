@@ -1,15 +1,16 @@
-import { Swiper, SwiperItem } from '@tarojs/components'
+import { Swiper, SwiperItem, Image } from '@tarojs/components'
 import './style.scss'
 
 interface enumItem {
-    content:any
-    key:any
+    banner_src:string
+    banner_id:string
+    baner_name:string
     className?:string
 }
 
 
 interface BannerProps {
-    item:Array<enumItem>
+    item:enumItem[]
     indicatorDots:boolean // 是否显示指示点
     autoplay:boolean // 是否自动切换
     vertical:boolean // 是否切换成纵向
@@ -36,9 +37,9 @@ function Banner(props:BannerProps) {
             >
                 {
                     item.map(j => (
-                        <SwiperItem key={j.key} className={j.className}>
+                        <SwiperItem key={j.banner_id} className={j.className}>
                             {
-                                j.content
+                                <Image  src={j.banner_src} style={{width:"100%",height:"100%"}} lazyLoad />
                             }
                         </SwiperItem>
                     ))

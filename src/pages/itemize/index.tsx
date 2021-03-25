@@ -2,7 +2,8 @@ import { Component } from 'react'
 import { connect } from 'react-redux'
 import { View } from '@tarojs/components'
 import { Footer,TagTree,NavGrid,TopNavBar } from '../../components'
-import { tabList,tabsPaneList } from './data'
+import {getSecondPro} from '../../api'
+import fetch from '../../request'
 
 // #region 书写注意
 //
@@ -15,14 +16,10 @@ import { tabList,tabsPaneList } from './data'
 // #endregion
 
 type PageStateProps = {
-  counter: {
-    num: number
-  }
+  firstClass
 }
 type PageDispatchProps = {
-  add: () => void
-  dec: () => void
-  asyncAdd: () => any
+
 }
 type PageOwnProps = {}
 type IProps = PageStateProps & PageDispatchProps & PageOwnProps
@@ -30,14 +27,15 @@ interface Index {
   props: IProps;
 }
 
-@connect(({ counter }) => ({
-  counter
+@connect(({ firstClass }) => ({
+  firstClass
 }))
 class Index extends Component<any,any> {
   constructor(props){
     super(props)
     this.state = {
-      tagTreeCurrent:0
+      tabsPaneList:[],
+      first_classification_id:''
     }
   }
   leftIConhandleClick = ()=>{
@@ -52,20 +50,53 @@ class Index extends Component<any,any> {
   inpHandlerClick = () => {
     console.log('点击inp')
   }
+
+  getSecondProList(){
+    fetch.post(getSecondPro,{
+      first_classification_id:this.state.first_classification_id
+    }).then(res => {
+      console.log(res.data,11111)
+      this.setState({
+        tabsPaneList:res.data.map(item => ({
+          key:item.second_classification_id,
+          value:item.second_classification_name,
+          image:item.second_classification_image_url
+        }))
+      })
+    })
+  }
+  static getDerivedStateFromProps(nextProps, prevState){
+    if(prevState.first_classification_id === '' && nextProps.firstClass.length > 0){
+      return {
+        first_classification_id:nextProps.firstClass[0].key
+      }
+    }
+    return null
+  }
+  componentDidMount(){
+    this.getSecondProList()
+  }
   render () {
-    const tabsPaneLists = tabsPaneList.map((item,index) => ({
-      content:<NavGrid data={item.content} columnNum={3} key={index}/>
-    }))
-    const {tagTreeCurrent} = this.state
+    const tabList = this.props.firstClass.map(item => ({name:item.value,id:item.key}))
+    const {
+      tabsPaneList
+    } = this.state
     return (
-      <View >
+      <View style={{height:"100vh"}}>
          <TopNavBar 
             rgIconSthandleClick={this.rgIconSthandleClick}
             rgIconNdhandleClick={this.rgIconNdhandleClick}
             leftIConhandleClick={this.leftIConhandleClick}
             inpHandlerClick={this.inpHandlerClick}
           />
-        <TagTree handleClick={(tagTreeCurrent)=>{this.setState({tagTreeCurrent })}} tabList={tabList} tabsPaneList={tabsPaneLists} current={tagTreeCurrent}/>
+        <TagTree handleClick={(first_classification_id)=>{this.setState({first_classification_id},this.getSecondProList)}} tabList={tabList}>
+          <View style={{width:"100%",height:"100%"}}>
+                {
+                      <NavGrid data={tabsPaneList} columnNum={3}/>
+                }
+          </View>
+            
+        </TagTree>
         <Footer current={1}/>
       </View>
     )

@@ -22,7 +22,8 @@ import './style.scss'
 type PageStateProps = {
   counter: {
     num: number
-  }
+  },
+  carefullyChosen:any[]
 }
 
 type PageDispatchProps = {
@@ -40,11 +41,15 @@ interface Index {
   props: IProps;
 }
 
-@connect(({ counter }) => ({
-  counter
+@connect(({ counter,carefullyChosen }) => ({
+  counter,
+  carefullyChosen
 }))
 class Index extends Component {
   render () {
+    const {
+      carefullyChosen
+    } = this.props
     return (
       <View className='amst-myInfo'>
         <Avatar />
@@ -56,11 +61,11 @@ class Index extends Component {
         <ServerTool />
         <View>
         <Title title={`精选`}/>
-          {
-                arrList.map((item,index) => (
-                  <List key={index} title={item.title} desc={item.desc} src={item.src} price={item.price} />
-                ))
-              }
+        {
+              carefullyChosen.map((item) => (
+                <List key={item.carefullyChosen_id} title={item.carefullyChosen_name} desc={item.carefullyChosen_desc} src={item.carefullyChosen_image_url} price={item.carefullyChosen_price} />
+              ))
+            }
         </View>
         <Footer current={2}/>
       </View>

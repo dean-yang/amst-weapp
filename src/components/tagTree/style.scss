@@ -1,0 +1,32 @@
+.amst-tree{
+    display:flex;
+    height:100%;
+    &-tab{
+        height: 100%;
+        background-color: #fff;
+        padding: 0 10px;
+        &-item{
+            margin: 40px 0;
+            font-size: 30px;
+            text-align: center;
+            color: #333;
+            padding: 0 20px;
+        }
+        & .show{
+            color: rgb(9, 153, 209);
+            position: relative;
+            ::after{
+                content: "|";
+                width: 2px;
+                position: absolute;
+                left: 0;
+                margin-right: 5px;
+                font-size: 30px;
+        }
+    }
+    }
+    &-content{
+        flex: 1;
+        height: 100%;
+    }
+}

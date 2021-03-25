@@ -5,8 +5,10 @@ import './style.scss'
 import {TopNavBar,Banner,NavGrid,Footer,ActivityImage,List,Title} from '../../components'
 import {Emergency} from './components/emergency'
 import {CleaningChange} from './components/cleaningChange'
-import { bannerList, navDataList ,arrList} from './data'
 import fetch from '../../request'
+import {getBanner,getchangeSeasonClean,getcarefullyChosen} from '../../api'
+import {getFirstClassList} from '../../actions/firstClass'
+import { getcarefullyChosenList } from '../../actions/carefullyChosen'
 
 
 // #region 书写注意
@@ -20,15 +22,13 @@ import fetch from '../../request'
 // #endregion
 
 type PageStateProps = {
-  counter: {
-    num: number
-  }
+  firstClass:any[]
+  carefullyChosen:any[]
 }
 
 type PageDispatchProps = {
-  add: () => void
-  dec: () => void
-  asyncAdd: () => any
+  getFirstClassList:()=>any
+  getcarefullyChosenList:()=>any
 }
 
 type PageOwnProps = {}
@@ -40,10 +40,26 @@ interface Index {
   props: IProps;
 }
 
-@connect(({ counter }) => ({
-  counter
+@connect(({ firstClass,carefullyChosen }) => ({
+  firstClass,
+  carefullyChosen
+}),(dispatch)=>({
+  getFirstClassList(){
+    dispatch(getFirstClassList())
+  },
+  getcarefullyChosenList(){
+    dispatch(getcarefullyChosenList())
+  }
 }))
-class Index extends Component {
+class Index extends Component<any,any> {
+  constructor(props){
+    super(props)
+    this.state = {
+      bannerData:[],
+      changeSeasonCleanList:[],
+      carefullyChosenList:[],
+    }
+  }
 
   leftIConhandleClick = ()=>{
     console.log('左边图标')
@@ -57,15 +73,38 @@ class Index extends Component {
   inpHandlerClick = () => {
     console.log('点击inp')
   }
-  // 
   componentDidMount(){
-    fetch.post('api/banner/get',{}).then(res => {
-      console.log(res)
+      this.getBannerLIst()
+      this.getchangeSeasonCleanList()
+      this.props.getFirstClassList()
+      this.props.getcarefullyChosenList()
+  }
+
+  getBannerLIst = ()=>{
+    fetch.post(getBanner,{}).then(res => {
+      this.setState({
+        bannerData:res.data
+      })
+    })
+  }
+  getchangeSeasonCleanList = ()=>{
+    fetch.post(getchangeSeasonClean,{}).then(res => {
+      this.setState({
+        changeSeasonCleanList:res.data,
+      })
     })
   }
   
 
   render () {
+    const {
+      bannerData,
+      changeSeasonCleanList,
+    } = this.state
+    const {
+      firstClass,
+      carefullyChosen
+    } = this.props
     return (  
         <View className="amst-home">
           <TopNavBar 
@@ -74,17 +113,17 @@ class Index extends Component {
             leftIConhandleClick={this.leftIConhandleClick}
             inpHandlerClick={this.inpHandlerClick}
           />
-          <Banner item={bannerList} indicatorDots autoplay vertical={false} interval={2000}/>
-          <NavGrid data={navDataList} columnNum={5}/>
+          <Banner item={bannerData} indicatorDots autoplay vertical={false} interval={2000}/>
+          <NavGrid data={firstClass} columnNum={5}/>
           <ActivityImage />
           <Emergency />
-          <CleaningChange />
+          <CleaningChange cleanChangeList={changeSeasonCleanList}/>
           <View className={`amst-home-list`}>  
             <Title title={'精选'}/>
 
             {
-              arrList.map((item,index) => (
-                <List key={index} title={item.title} desc={item.desc} src={item.src} price={item.price} />
+              carefullyChosen.map((item) => (
+                <List key={item.carefullyChosen_id} title={item.carefullyChosen_name} desc={item.carefullyChosen_desc} src={item.carefullyChosen_image_url} price={item.carefullyChosen_price} />
               ))
             }
           </View>
