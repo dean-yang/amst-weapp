@@ -6,7 +6,6 @@ import {Avatar} from './conponensts/avatar'
 import {AtNoticebar} from 'taro-ui'
 import {Order} from './conponensts/order'
 import {ServerTool} from './conponensts/serverTool'
-import {arrList} from '../index/data'
 import './style.scss'
 
 // #region 书写注意

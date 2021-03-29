@@ -6,9 +6,10 @@ import {TopNavBar,Banner,NavGrid,Footer,ActivityImage,List,Title} from '../../co
 import {Emergency} from './components/emergency'
 import {CleaningChange} from './components/cleaningChange'
 import fetch from '../../request'
-import {getBanner,getchangeSeasonClean,getcarefullyChosen} from '../../api'
+import {getBanner,getchangeSeasonClean} from '../../api'
 import {getFirstClassList} from '../../actions/firstClass'
 import { getcarefullyChosenList } from '../../actions/carefullyChosen'
+import Taro from '@tarojs/taro'
 
 
 // #region 书写注意
@@ -40,7 +41,7 @@ interface Index {
   props: IProps;
 }
 
-@connect(({ firstClass,carefullyChosen }) => ({
+@connect(({ firstClass,carefullyChosen}) => ({
   firstClass,
   carefullyChosen
 }),(dispatch)=>({
@@ -123,7 +124,11 @@ class Index extends Component<any,any> {
 
             {
               carefullyChosen.map((item) => (
-                <List key={item.carefullyChosen_id} title={item.carefullyChosen_name} desc={item.carefullyChosen_desc} src={item.carefullyChosen_image_url} price={item.carefullyChosen_price} />
+                <List handlerClick={()=>{
+                  Taro.navigateTo({
+                    url:`/pages/detailSecod/index?second_classification_id=${item.second_classification_id}`
+                  })
+                }} key={item.carefullyChosen_id} title={item.carefullyChosen_name} desc={item.carefullyChosen_desc} src={item.carefullyChosen_image_url} price={item.carefullyChosen_price} />
               ))
             }
           </View>

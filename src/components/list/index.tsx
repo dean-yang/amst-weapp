@@ -8,12 +8,13 @@ interface ListProps{
     title:string
     desc:string
     price:string
+    handlerClick:()=>void
 }
 
 function List(props:ListProps) {
-    const {src,desc,title,price} = props
+    const {src,desc,title,price,handlerClick} = props
     return (
-        <View className={`amst-list`}>
+        <View className={`amst-list`} onClick={handlerClick}>
             <View className={`amst-list-image`}>
                 <Image src={src} className={`amst-list-image-img`}/>
             </View>
