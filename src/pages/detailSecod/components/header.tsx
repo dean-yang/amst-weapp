@@ -2,15 +2,17 @@ import {AtNavBar
 } from 'taro-ui'
 
 interface HeaderProps {
-  data:any
+  data:any,
+  onClickLeftIcon:()=>void
 }
   function Header(props:HeaderProps) {
-    console.log(props)
+    const {data,onClickLeftIcon} = props
     return (
       <AtNavBar
         color='#000'
-        title={props.data.text}
+        title={data.text}
         leftIconType={'chevron-left'}
+        onClickLeftIcon={onClickLeftIcon}
     />
     )
 }
